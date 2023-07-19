@@ -6,7 +6,7 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const login = async (email, password) => {
+  const loginClient = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
@@ -29,5 +29,28 @@ export const useLogin = () => {
     }
   };
 
-  return { login, isLoading, error };
+  const loginWorker = async (email, password) => {
+    setIsLoading(true);
+    setError(null);
+
+    const response = await fetch("http://localhost:4000/worker/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(data.error);
+    }
+    if (response.ok) {
+      localStorage.setItem("user", JSON.stringify(data));
+      dispatch({ type: "LOGIN", payload: data });
+      setIsLoading(false);
+    }
+  };
+
+  return { loginClient, loginWorker, isLoading, error };
 };

@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <div>
+        <div className="me-md-5 me-4">
           <img src={NavLogo} alt="nav-logo" className="nav-logo" />
         </div>
         <button
@@ -39,13 +39,8 @@ const Navbar = () => {
           <div>
             {!user && (
               <>
-                <Link>
-                  <button className="custom-button me-3">
-                    Provide Service
-                  </button>
-                </Link>
                 <Link to="/client/login">
-                  <button className="custom-button-2">Get Service</button>
+                  <button className="custom-button">Get started</button>
                 </Link>
               </>
             )}
