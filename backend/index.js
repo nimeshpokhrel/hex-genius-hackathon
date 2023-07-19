@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
 import UserRoutes from "./Routes/UserRoutes.js";
 
 dotenv.config();
@@ -8,6 +9,8 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use(UserRoutes);
 

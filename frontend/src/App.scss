@@ -3,8 +3,8 @@
 }
 
 :root {
-  --primary-orange: rgb(255, 165, 0);
-  --secondary-orange: rgb(255, 136, 0);
+  --primary-orange: #ffa500;
+  --secondary-orange: #ff8800;
 }
 
 .custom-button {
@@ -20,11 +20,15 @@
   font-weight: 600;
   text-transform: uppercase;
   color: white;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-image: none;
-    background-color: transparent;
-    color: black;
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-orange),
+      var(--primary-orange)
+    );
+    transform: scale(1.02);
   }
 }
 

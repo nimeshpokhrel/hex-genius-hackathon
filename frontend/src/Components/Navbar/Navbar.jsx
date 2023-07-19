@@ -1,8 +1,17 @@
 import React from "react";
 import "./Navbar.scss";
 import NavLogo from "../../Assets/img/logo.png";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../../Hooks/useAuthContext";
+import { useLogout } from "../../Hooks/useLogout";
 
 const Navbar = () => {
+  const { user } = useAuthContext();
+  const { logout } = useLogout();
+
+  const handleLogout = async () => {
+    await logout();
+  };
   return (
     <nav class="navbar navbar-expand-lg">
       <div class="container">
@@ -28,8 +37,25 @@ const Navbar = () => {
             <div>nimesh</div>
           </div>
           <div>
-            <button className="custom-button me-3">Provide Service</button>
-            <button className="custom-button-2">Get Service</button>
+            {!user && (
+              <>
+                <Link>
+                  <button className="custom-button me-3">
+                    Provide Service
+                  </button>
+                </Link>
+                <Link to="/client/login">
+                  <button className="custom-button-2">Get Service</button>
+                </Link>
+              </>
+            )}
+            {user && (
+              <>
+                <button onClick={handleLogout} className="custom-button">
+                  LOGOUT
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
