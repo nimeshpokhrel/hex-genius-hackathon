@@ -11,11 +11,11 @@ const AuthRoutes = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route
-        path="/client/login"
+        path="/login"
         element={user ? <Navigate to="/" /> : <Login />}
       />
       <Route
-        path="/client/signup"
+        path="/signup"
         element={user ? <Navigate to="/" /> : <Signup />}
       />
     </Routes>

@@ -66,7 +66,7 @@ const Signup = () => {
                   </h4>
                   <span className="already-registred mt-1">
                     Already a user ?{" "}
-                    <Link to="/client/login/">Login Now !</Link>
+                    <Link to="/login/">Login Now !</Link>
                   </span>
                   {error ? (
                     <div className="register-error mt-4">{error}</div>

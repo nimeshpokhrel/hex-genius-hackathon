@@ -42,6 +42,10 @@ const WorkerSchema = mongoose.Schema(
       type: String,
       default: "worker",
     },
+    userStatus: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

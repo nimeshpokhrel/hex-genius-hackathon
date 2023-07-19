@@ -4,6 +4,8 @@ import NavLogo from "../../Assets/img/logo.png";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../Hooks/useAuthContext";
 import { useLogout } from "../../Hooks/useLogout";
+import AddIcon from "@mui/icons-material/Add";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Navbar = () => {
   const { user } = useAuthContext();
@@ -34,18 +36,39 @@ const Navbar = () => {
           id="navbarNavAltMarkup"
         >
           <div class="navbar-nav">
-            <div>nimesh</div>
+            <Link to="/">
+              <div className="nav-item me-45">HOME</div>
+            </Link>
+            <Link to="/#services">
+              <div className="nav-item me-45">SERVICES</div>
+            </Link>
+            <div className="nav-item me-45">FAQs</div>
+            <div className="nav-item me-45">SUPPORT</div>
           </div>
-          <div>
+          <div className="d-flex align-items-center">
             {!user && (
               <>
-                <Link to="/client/login">
+                <Link to="/login">
                   <button className="custom-button">Get started</button>
                 </Link>
               </>
             )}
             {user && (
               <>
+                {user && user.userType === "client" && (
+                  <Link to="/find-worker">
+                    <div className="custom-button-2 d-flex align-items-center me-4">
+                      <SearchIcon className="me-2" />
+                      FIND A WORKER
+                    </div>
+                  </Link>
+                )}
+                {user && user.userType === "worker" && (
+                  <div className="custom-button-2 d-flex align-items-center me-4">
+                    <AddIcon className="me-2" />
+                    POST A JOB
+                  </div>
+                )}
                 <button onClick={handleLogout} className="custom-button">
                   LOGOUT
                 </button>

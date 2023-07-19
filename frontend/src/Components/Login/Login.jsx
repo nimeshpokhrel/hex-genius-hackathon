@@ -39,7 +39,7 @@ const Login = () => {
                   </h4>
                   <span className="not-registred mt-1">
                     Not registered yet?{" "}
-                    <Link to="/client/signup/">Register Now !</Link>
+                    <Link to="/signup/">Register Now !</Link>
                   </span>
                   {error ? (
                     <div className="login-error mt-4">{error}</div>
