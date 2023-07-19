@@ -1,0 +1,53 @@
+.client-login-wrapper {
+  height: 100vh;
+
+  .client-login {
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 8px;
+  }
+
+  .title-color {
+    color: var(--secondary-orange);
+  }
+
+  .not-registred {
+    font-size: 14.5px;
+    a {
+      color: var(--secondary-orange);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--primary-orange);
+      }
+    }
+  }
+
+  .input-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--secondary-orange);
+  }
+
+  input {
+    border: 1px solid rgba(255, 165, 0, 0.5);
+    background-color: rgba(255, 165, 0, 0.01);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 15px;
+    outline: none;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 165, 0, 0.05);
+    }
+
+    &:focus {
+      border: 1px solid rgba(255, 165, 0, 1);
+      background-color: rgba(255, 165, 0, 0.1);
+    }
+  }
+}

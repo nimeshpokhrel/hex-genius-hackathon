@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --primary-orange: rgb(255, 165, 0);
+  --secondary-orange: rgb(255, 136, 0);
+}
+
+.custom-button {
+  border: 2px solid var(--primary-orange);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    to left,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+
+  &:hover {
+    background-image: none;
+    background-color: transparent;
+    color: black;
+  }
+}
+
+.custom-button-2 {
+  border: 2px solid var(--primary-orange);
+  background-color: transparent;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &:hover {
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-orange),
+      var(--primary-orange)
+    );
+    color: white;
+  }
+}
