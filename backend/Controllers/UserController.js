@@ -7,7 +7,9 @@ export const ClientSignupHandler = async (req, res) => {
     req.body;
   const user = await UserModel.findOne({ email });
   if (user) {
-    return res.status(400).json({ error: "Sorry, user with the email already exist !" });
+    return res
+      .status(400)
+      .json({ error: "Sorry, user with the email already exist !" });
   }
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
@@ -41,6 +43,17 @@ export const ClientLoginHandler = async (req, res) => {
   if (!checkPassword) {
     return res.status(400).json({ error: "Sorry, credentials incorrect !" });
   }
+
+  const token = jwt.sign(user.id, process.env.JWT);
+
+  return res.status(200).json({ user, token });
+};
+
+export const ClientValidateHandler = async (req, res) => {
+  const oldToken = req.headers.authorization.split(" ")[1];
+  const clientID = jwt.verify(oldToken, process.env.JWT);
+
+  const user = await UserModel.findOne({ _id: clientID });
 
   const token = jwt.sign(user.id, process.env.JWT);
 

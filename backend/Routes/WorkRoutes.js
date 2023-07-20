@@ -10,6 +10,7 @@ import {
   RejectRequest,
   RequestCompleted,
   HireWorker,
+  ListSentInvite,
 } from "../Controllers/WorkController.js";
 import { CheckAccess } from "../Controllers/AuthController.js";
 
@@ -18,6 +19,8 @@ const router = express.Router();
 router.post("/getworkscategory", GetWorkFromCategory);
 
 router.post("/hireworker", CheckAccess, HireWorker);
+
+router.get("/listsentinvite", CheckAccess, ListSentInvite);
 
 router.get("/getuserworks", CheckAccess, GetAllUserWork);
 

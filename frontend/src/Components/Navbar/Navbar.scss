@@ -29,3 +29,36 @@
     width: 100px;
   }
 }
+
+.user-area-wrapper  {
+  border-left: 2px solid black;
+  padding-left: 1.5rem;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-balance {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--secondary-orange);
+}
+
+.add-balance-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(128, 128, 128, 0.20);
+  border: none;
+  color: black;
+
+  &:hover {
+    background-image: linear-gradient(to right, var(--secondary-orange), var(--primary-orange));
+    cursor: pointer;
+  }
+}

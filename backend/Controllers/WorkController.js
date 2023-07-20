@@ -24,6 +24,28 @@ export const HireWorker = async (req, res) => {
   const { workID, message } = req.body;
   const workDetails = await WorkModel.findById(workID);
 
+  const duplicateCheck = await RequestModel.find({
+    clientID: clientID,
+    workID: workID,
+  });
+
+  console.log(duplicateCheck);
+
+  if (duplicateCheck.length !== 0) {
+    for (var item in duplicateCheck) {
+      if (
+        (!duplicateCheck[item].accepted && !duplicateCheck[item].pending) ||
+        (duplicateCheck[item].accepted && duplicateCheck[item].completed)
+      ) {
+        const delDataID = duplicateCheck[item].id;
+        await RequestModel.deleteOne({ _id: delDataID });
+      }
+    }
+    return res
+      .status(403)
+      .json({ error: "Error: Already sent invitation for hire !" });
+  }
+
   const newRequest = new RequestModel({
     clientID,
     workID,
@@ -34,6 +56,19 @@ export const HireWorker = async (req, res) => {
   const data = await newRequest.save();
 
   return res.status(200).json(data);
+};
+
+export const ListSentInvite = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const clientID = jwt.verify(token, process.env.JWT);
+
+  const getInvites = await RequestModel.find({ clientID })
+    .populate("workerID")
+    .populate("workID");
+
+  return res.status(200).json(getInvites);
+
+  // if(!getInvites) return res.status(403).json({error: "No "})
 };
 
 export const GetAllUserWork = async (req, res) => {

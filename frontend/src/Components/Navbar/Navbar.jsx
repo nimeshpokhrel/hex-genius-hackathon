@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 import NavLogo from "../../Assets/img/logo.png";
 import { Link } from "react-router-dom";
@@ -7,14 +7,39 @@ import { useLogout } from "../../Hooks/useLogout";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import LoginIcon from "@mui/icons-material/Login";
+import AddIcon from "@mui/icons-material/Add";
+import { useValidate } from "../../Hooks/useValidate";
 
 const Navbar = () => {
+  const { validateClient } = useValidate();
   const { user } = useAuthContext();
   const { logout } = useLogout();
+  const { token } = useAuthContext();
+
+  const handleAddBalance = async () => {
+    const response = await fetch("http://localhost:4000/add-balance", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const json = await response.json();
+    console.log(json);
+    window.open(`${json.payment_url}`);
+  };
 
   const handleLogout = async () => {
     await logout();
   };
+
+  useEffect(() => {
+    if (!user == null) {
+      validateClient(token);
+    }
+  }, []);
+
   return (
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
@@ -87,6 +112,24 @@ const Navbar = () => {
                     style={{ fontSize: "1.25rem" }}
                   />
                 </button>
+                <div className="user-area-wrapper ms-3 d-flex justify-content-center align-items-center">
+                  <div className="d-flex flex-column align-items-center justify-content-center me-3">
+                    <div className="user-name">
+                      {user.firstName + " " + user.lastName}
+                    </div>
+                    <div className="user-balance">
+                      NPR: {user.balance.toFixed(2)}
+                    </div>
+                  </div>
+                  <button
+                    className="add-balance-btn"
+                    onClick={() => {
+                      handleAddBalance();
+                    }}
+                  >
+                    <AddIcon />
+                  </button>
+                </div>
               </>
             )}
           </div>
