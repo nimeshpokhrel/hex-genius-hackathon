@@ -33,7 +33,17 @@ const WorkerSchema = mongoose.Schema(
     },
     service: {
       type: String,
-      enum: ["plumber", "electrician", "carpenter"],
+      enum: [
+        "plumber",
+        "electrician",
+        "carpenter",
+        "beautician",
+        "driver",
+        "maid",
+        "tutor",
+        "homecook",
+        "priest",
+      ],
     },
     idImage: {
       type: String,

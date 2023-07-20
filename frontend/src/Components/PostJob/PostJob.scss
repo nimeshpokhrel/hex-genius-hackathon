@@ -64,7 +64,8 @@
     color: var(--secondary-orange);
   }
 
-  input, textarea {
+  input,
+  textarea {
     border: 1px solid rgba(255, 165, 0, 0.5);
     background-color: rgba(255, 165, 0, 0.01);
     padding: 0.6rem;
@@ -85,4 +86,15 @@
       background-color: rgba(255, 165, 0, 0.1);
     }
   }
+}
+
+.post-error {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  text-align: start;
+  width: fit-content;
+  background-color: rgba(255, 0, 0, 0.025);
+  border: 1px solid red;
+  font-size: 15px;
+  font-weight: 500;
 }

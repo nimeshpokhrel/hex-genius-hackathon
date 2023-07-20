@@ -8,6 +8,7 @@ import {
   ListWorkRequests,
   AcceptRequest,
   RejectRequest,
+  RequestCompleted,
 } from "../Controllers/WorkController.js";
 import { CheckAccess } from "../Controllers/AuthController.js";
 
@@ -28,5 +29,7 @@ router.get("/getworkrequests", CheckAccess, ListWorkRequests);
 router.post("/acceptrequest", CheckAccess, AcceptRequest);
 
 router.post("/rejectrequest", CheckAccess, RejectRequest);
+
+router.post("/requestcompleted", CheckAccess, RequestCompleted);
 
 export default router;

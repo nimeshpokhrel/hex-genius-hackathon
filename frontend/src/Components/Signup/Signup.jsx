@@ -65,8 +65,7 @@ const Signup = () => {
                     <span className="title-color">Hajurko Sahayak</span>
                   </h4>
                   <span className="already-registred mt-1">
-                    Already a user ?{" "}
-                    <Link to="/login/">Login Now !</Link>
+                    Already a user ? <Link to="/login/">Login Now !</Link>
                   </span>
                   {error ? (
                     <div className="register-error mt-4">{error}</div>
@@ -189,6 +188,13 @@ const Signup = () => {
                           </option>
                           <option value="plumber">Plumber</option>
                           <option value="carpenter">Carpenter</option>
+                          <option value="beautician">Beautician</option>
+                          <option value="electrician">Electrician</option>
+                          <option value="driver">Driver</option>
+                          <option value="maid">Maid</option>
+                          <option value="tutor">Tutor</option>
+                          <option value="homecook">Homecook</option>
+                          <option value="priest">Priest</option>
                         </select>
                       </div>
                     )}

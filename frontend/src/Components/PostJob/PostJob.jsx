@@ -7,6 +7,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddIcon from "@mui/icons-material/Add";
 import Modal from "react-modal";
 import JobRequests from "../JobRequests/JobRequests";
+import Footer from "../Footer/Footer";
 const customStyles = {
   content: {
     top: "50%",
@@ -106,12 +107,16 @@ const PostJob = () => {
   };
 
   return (
-    <div>
+    <div className="post-job-wrapper">
       <Navbar />
-      <div className="mt-4">
+      <div className="body-margin mt-4">
         <div className="container">
+          {error && (
+            <div className="d-flex justify-content-center">
+              <div className="post-error mb-4 mt-2">{error}</div>
+            </div>
+          )}
           <div className="d-flex justify-content-between align-items-center w-100">
-            {error && <>{error}</>}
             <h4 className="ms-2">
               Your Job <span className="secondary-color">Listings</span>
             </h4>
@@ -132,7 +137,11 @@ const PostJob = () => {
               onRequestClose={() => setModalOpenSecond(false)}
               style={customStyles}
             >
-              <div className="modal-input">
+              <h4 className="mb-2 text-center">
+                Add Jo
+                <span style={{ color: "var(--secondary-orange)" }}>b Listing</span>
+              </h4>
+              <div className="modal-input mt-3">
                 <div className="d-flex flex-column">
                   <span className="input-label">Job Title:</span>
                   <input
@@ -217,8 +226,12 @@ const PostJob = () => {
                     onChange={(e) => setRate(e.target.value)}
                   />
                 </div>
+                <div className="d-flex flex-column mt-3">
+                  <span className="input-label">Service:</span>
+                  <input type="text" value={user.service} disabled />
+                </div>
               </div>
-              <div className="d-flex mt-3">
+              <div className="d-flex mt-4">
                 <button
                   className="custom-button-2 me-3"
                   onClick={() => setModalOpen(false)}
@@ -288,6 +301,7 @@ const PostJob = () => {
         </div>
       </div>
       <JobRequests />
+      <Footer />
     </div>
   );
 };

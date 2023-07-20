@@ -16,7 +16,7 @@ const Navbar = () => {
     await logout();
   };
   return (
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <div className="me-md-5 me-4">
           <img src={NavLogo} alt="nav-logo" className="nav-logo" />
@@ -33,7 +33,7 @@ const Navbar = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse justify-content-between"
+          class="ms-4 collapse navbar-collapse justify-content-between"
           id="navbarNavAltMarkup"
         >
           <div class="navbar-nav">

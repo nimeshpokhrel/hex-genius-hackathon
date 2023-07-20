@@ -1,0 +1,36 @@
+.footer-wrapper {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  margin-top: 5rem;
+  height: auto;
+  background-image: url(../../Assets/img/footerbg.png);
+  background-size: cover;
+  border-top: 2px solid var(--secondary-orange);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.05) !important;
+}
+
+.about-us-text {
+  font-size: 15.5px;
+  line-height: 1.75rem;
+}
+
+.social-items span {
+  font-weight: 500;
+  font-size: 15px;
+
+  &:hover {
+    color: var(--primary-orange);
+    cursor: pointer;
+  }
+}
+
+.contact-items span {
+  font-weight: 500;
+  font-size: 14.5px;
+}
+
+.contact-icons {
+  font-size: 1rem;
+  margin-right: 1rem;
+}

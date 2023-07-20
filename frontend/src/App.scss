@@ -7,6 +7,10 @@
   --secondary-orange: #ff8800;
 }
 
+body {
+  background-color: white;
+}
+
 .custom-button {
   border: 2px solid var(--primary-orange);
   padding: 0.6rem 1rem;
@@ -64,4 +68,12 @@ a {
 
 .secondary-color {
   color: var(--secondary-orange);
+}
+
+.body-margin {
+  margin-top: 105px !important;
+}
+
+.body-margin-2 {
+  margin-top: 80px !important;
 }

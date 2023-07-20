@@ -24,6 +24,10 @@ const RequestSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const RequestModel = mongoose.model("request", RequestSchema);

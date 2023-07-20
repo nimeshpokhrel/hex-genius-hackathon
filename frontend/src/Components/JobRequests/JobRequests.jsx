@@ -61,6 +61,17 @@ const JobRequests = () => {
     });
   };
 
+  const handleCompleted = async (requestID) => {
+    const response = await fetch("http://localhost:4000/requestcompleted", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ requestID }),
+    });
+  };
+
   return (
     <div className="container mt-5">
       <h4 className="ms-2">
@@ -69,7 +80,7 @@ const JobRequests = () => {
       {/* {error &} */}
       <div className="row">
         {requests.map((data, index) => {
-          if (data.pending || data.accepted == true)
+          if (data.pending || (data.accepted == true && data.completed != true))
             return (
               <div key={index} className="col-12 col-lg-4 mt-4">
                 <div className="request-wrapper">
@@ -104,7 +115,7 @@ const JobRequests = () => {
                         {"NPR. " + data.workID.rate}
                       </div>
                     </div>
-                    {!data.accepted && (
+                    {!data.accepted && !data.completed ? (
                       <div className="d-flex align-items-center mt-3">
                         <button
                           onClick={() => {
@@ -131,6 +142,24 @@ const JobRequests = () => {
                           REJECT
                         </button>
                       </div>
+                    ) : (
+                      data.accepted &&
+                      !data.completed && (
+                        <div className="d-flex align-items-center mt-3">
+                          <button
+                            onClick={() => {
+                              handleCompleted(data._id);
+
+                              setTimeout(() => {
+                                getWorkRequests();
+                              }, 1500);
+                            }}
+                            className="custom-button me-3 w-100"
+                          >
+                            Mark Completed
+                          </button>
+                        </div>
+                      )
                     )}
                   </div>
                 </div>

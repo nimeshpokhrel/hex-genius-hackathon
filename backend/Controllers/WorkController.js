@@ -53,7 +53,7 @@ export const AddUserWork = async (req, res) => {
   } else {
     return res
       .status(403)
-      .json({ error: "Your Job Listing Limit has reached !" });
+      .json({ error: "Error: Your job listing limit has been reached !" });
   }
 };
 
@@ -117,7 +117,17 @@ export const RejectRequest = async (req, res) => {
 
   await request.save();
 
-  console.log(request);
+  return res.status(200).json(request);
+};
+
+export const RequestCompleted = async (req, res) => {
+  const { requestID } = req.body;
+
+  const request = await RequestModel.findById(requestID);
+
+  request.completed = true;
+
+  await request.save();
 
   return res.status(200).json(request);
 };

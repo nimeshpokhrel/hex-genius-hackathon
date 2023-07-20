@@ -2,13 +2,20 @@ import React from "react";
 import "./FindWorker.scss";
 import Navbar from "../Navbar/Navbar";
 import AvailableCategories from "../AvailableCategories/AvailableCategories";
+import Footer from "../Footer/Footer";
 
 const FindWorker = () => {
   return (
-    <>
+    <div className="body-margin">
       <Navbar />
-      <AvailableCategories />
-    </>
+      <div className="container">
+        <h4 className="ms-2 text-center mt-5">
+          Our Availab<span className="secondary-color">le Categories</span>
+        </h4>
+        <AvailableCategories />
+      </div>
+      <Footer />
+    </div>
   );
 };
 

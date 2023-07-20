@@ -4,7 +4,7 @@ import heroImg from "../../Assets/img/hero-img.png";
 
 const Hero = () => {
   return (
-    <div className="hero-wrapper">
+    <div className="hero-wrapper body-margin-2">
       <div className="container">
         <div className="row">
           <div className="col-6 d-flex flex-column align-items-start justify-content-center">

@@ -19,4 +19,16 @@
       font-size: 2rem;
     }
   }
+
+  .category-item a {
+    color: black;
+
+    &:hover {
+      color: var(--primary-orange);
+    }
+
+    &:focus-within {
+      color: var(--secondary-orange);
+    }
+  }
 }
