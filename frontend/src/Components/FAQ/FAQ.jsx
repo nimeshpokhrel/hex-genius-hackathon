@@ -4,7 +4,7 @@ import "./FAQ.scss";
 
 const FAQ = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" id="faqs">
       <h2 className="section-heading" id="services">
         <span style={{ color: "var(--secondary-orange)" }}>Frequently</span>{" "}
         Asked Questions

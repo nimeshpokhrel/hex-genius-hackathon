@@ -6,7 +6,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const Support = () => {
   return (
-    <div className="container mt-5 py-5">
+    <div className="container mt-5 py-5" id="support">
       <h2 className="section-heading" id="services">
         <span style={{ color: "var(--secondary-orange)" }}>Reach Our</span>{" "}
         Support

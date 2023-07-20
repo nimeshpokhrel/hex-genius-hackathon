@@ -83,14 +83,18 @@ const Navbar = () => {
           id="navbarNavAltMarkup"
         >
           <div class="navbar-nav">
-            <Link to="/">
+            <a href="/">
               <div className="nav-item me-45">HOME</div>
-            </Link>
-            <Link to="#services">
+            </a>
+            <a href="#services">
               <div className="nav-item me-45">SERVICES</div>
-            </Link>
-            <div className="nav-item me-45">FAQs</div>
-            <div className="nav-item me-45">SUPPORT</div>
+            </a>
+            <a href="#faqs">
+              <div className="nav-item me-45">FAQs</div>
+            </a>
+            <a href="#support">
+              <div className="nav-item me-45">SUPPORT</div>
+            </a>
           </div>
           <div className="d-flex align-items-center">
             {!user && (

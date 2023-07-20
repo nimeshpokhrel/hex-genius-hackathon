@@ -48,6 +48,12 @@ const JobRequests = () => {
       },
       body: JSON.stringify({ requestID }),
     });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+    }
   };
 
   const handleReject = async (requestID) => {
@@ -74,6 +80,11 @@ const JobRequests = () => {
 
   return (
     <div className="container mt-5">
+      {error && (
+        <div className="d-flex justify-content-start">
+          <div className="job-error mb-4 mt-2">{error}</div>
+        </div>
+      )}
       <h4 className="ms-2">
         Your Job <span className="secondary-color">Requests</span>
       </h4>

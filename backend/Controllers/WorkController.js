@@ -1,6 +1,7 @@
 import WorkModel from "../Models/WorkModel.js";
 import WorkerModel from "../Models/WorkerModel.js";
 import RequestModel from "../Models/RequestModel.js";
+import UserModel from "../Models/UserModel.js";
 
 import jwt from "jsonwebtoken";
 
@@ -28,8 +29,6 @@ export const HireWorker = async (req, res) => {
     clientID: clientID,
     workID: workID,
   });
-
-  console.log(duplicateCheck);
 
   if (duplicateCheck.length !== 0) {
     for (var item in duplicateCheck) {
@@ -149,7 +148,20 @@ export const ListWorkRequests = async (req, res) => {
 export const AcceptRequest = async (req, res) => {
   const { requestID } = req.body;
 
-  const request = await RequestModel.findById(requestID);
+  const request = await RequestModel.findById(requestID)
+    .populate("workerID")
+    .populate("clientID")
+    .populate("workID");
+
+  if (request.clientID.balance < request.workID.rate) {
+    return res.status(403).json({ error: "Client balane is too low !" });
+  }
+
+  const userData = await UserModel.findById(request.clientID._id);
+
+  userData.balance = userData.balance - request.workID.rate;
+
+  await userData.save();
 
   request.pending = false;
   request.accepted = true;
