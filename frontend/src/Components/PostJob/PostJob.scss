@@ -1,0 +1,57 @@
+.work-cards {
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.05) !important;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--secondary-orange);
+  }
+
+  .work-title {
+    font-size: 15.5px;
+    color: var(--secondary-orange);
+    font-weight: 600;
+  }
+
+  .work-description,
+  .work-rate,
+  .work-service {
+    font-size: 14px;
+  }
+
+  .work-label {
+    font-size: 15px;
+    color: var(--secondary-orange);
+    font-weight: 600;
+  }
+
+  .edit-work {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+
+    &:hover {
+      background-color: var(--secondary-orange);
+      color: white;
+    }
+  }
+  .del-work {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+
+    &:hover {
+      background-color: var(--secondary-orange);
+      color: white;
+    }
+  }
+}

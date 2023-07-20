@@ -4,8 +4,9 @@ import NavLogo from "../../Assets/img/logo.png";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../Hooks/useAuthContext";
 import { useLogout } from "../../Hooks/useLogout";
-import AddIcon from "@mui/icons-material/Add";
+import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Navbar = () => {
   const { user } = useAuthContext();
@@ -49,7 +50,13 @@ const Navbar = () => {
             {!user && (
               <>
                 <Link to="/login">
-                  <button className="custom-button">Get started</button>
+                  <button className="custom-button d-flex align-items-center">
+                    Get started{" "}
+                    <LoginIcon
+                      className="ms-2"
+                      style={{ fontSize: "1.25rem" }}
+                    />
+                  </button>
                 </Link>
               </>
             )}
@@ -64,13 +71,21 @@ const Navbar = () => {
                   </Link>
                 )}
                 {user && user.userType === "worker" && (
-                  <div className="custom-button-2 d-flex align-items-center me-4">
-                    <AddIcon className="me-2" />
-                    POST A JOB
-                  </div>
+                  <Link to="/post-job">
+                    <div className="custom-button-2 d-flex align-items-center me-4">
+                      YOUR JOBS
+                    </div>
+                  </Link>
                 )}
-                <button onClick={handleLogout} className="custom-button">
+                <button
+                  onClick={handleLogout}
+                  className="d-flex align-items-center custom-button"
+                >
                   LOGOUT
+                  <LogoutIcon
+                    className="ms-2"
+                    style={{ fontSize: "1.25rem" }}
+                  />
                 </button>
               </>
             )}

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import UserRoutes from "./Routes/UserRoutes.js";
 import WorkerRoutes from "./Routes/WorkerRoutes.js";
+import WorkRoutes from "./Routes/WorkRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.use(cors());
 app.use(UserRoutes);
 
 app.use(WorkerRoutes);
+
+app.use(WorkRoutes);
 
 mongoose.connect(process.env.DB_URL).then(console.log("DB Connected !"));
 
