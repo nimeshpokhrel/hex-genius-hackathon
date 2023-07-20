@@ -17,10 +17,12 @@ export const KhaltiHandler = async (req, res) => {
     const token = req.headers.authorization.split(" ")[1];
     const clientID = jwt.verify(token, process.env.JWT);
 
+    const { amount } = req.body;
+
     const payload = {
       return_url: "http://localhost:4000/verify-transaction/",
       website_url: "http://localhost:4000/",
-      amount: 3434,
+      amount: amount * 100,
       purchase_order_id: "y774fg85yu4545",
       purchase_order_name: "dfdbhjdgfy8dgfu",
       error_key: "fhgbjgjrt56",

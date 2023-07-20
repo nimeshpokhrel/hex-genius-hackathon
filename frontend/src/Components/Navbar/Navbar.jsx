@@ -9,12 +9,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import LoginIcon from "@mui/icons-material/Login";
 import AddIcon from "@mui/icons-material/Add";
 import { useValidate } from "../../Hooks/useValidate";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    padding: "1.5rem",
+    width: 500,
+  },
+};
 
 const Navbar = () => {
   const { validateClient } = useValidate();
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const { token } = useAuthContext();
+  const [modalOpenSecond, setModalOpenSecond] = useState();
+  const [amount, setAmount] = useState(0);
 
   const handleAddBalance = async () => {
     const response = await fetch("http://localhost:4000/add-balance", {
@@ -23,6 +40,7 @@ const Navbar = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({ amount }),
     });
 
     const json = await response.json();
@@ -35,7 +53,8 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (!user == null) {
+    console.log(user);
+    if (user !== null) {
       validateClient(token);
     }
   }, []);
@@ -124,11 +143,50 @@ const Navbar = () => {
                   <button
                     className="add-balance-btn"
                     onClick={() => {
-                      handleAddBalance();
+                      setModalOpenSecond(true);
                     }}
                   >
                     <AddIcon />
                   </button>
+                  <Modal
+                    isOpen={modalOpenSecond}
+                    onRequestClose={() => setModalOpenSecond(false)}
+                    style={customStyles}
+                  >
+                    <h4 className="mb-2 text-center">
+                      Add Ba
+                      <span style={{ color: "var(--secondary-orange)" }}>
+                        lance
+                      </span>
+                    </h4>
+                    <div className="modal-input mt-3">
+                      <div className="d-flex flex-column mt-3">
+                        <span className="input-label">Amount: (NPR)</span>
+                        <input
+                          type="number"
+                          value={amount}
+                          onChange={(e) => setAmount(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="d-flex mt-4">
+                      <button
+                        className="custom-button-2 me-3"
+                        onClick={() => setModalOpenSecond(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="custom-button"
+                        onClick={() => {
+                          setModalOpenSecond(false);
+                          handleAddBalance();
+                        }}
+                      >
+                        Add Balance
+                      </button>
+                    </div>
+                  </Modal>
                 </div>
               </>
             )}
