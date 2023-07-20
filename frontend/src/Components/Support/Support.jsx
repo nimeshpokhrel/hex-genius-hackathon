@@ -1,5 +1,8 @@
 import React from "react";
 import "./Support.scss";
+import AddLocationIcon from "@mui/icons-material/AddLocation";
+import InboxIcon from '@mui/icons-material/Inbox';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const Support = () => {
   return (
@@ -14,6 +17,41 @@ const Support = () => {
           following contact details
         </span>
       </h6>
+      <div className="row mt-5">
+        <div className="col-12 col-md-4">
+          <div className="contact-wrapper d-flex justify-content-between align-items-center">
+            <div>
+              <div className="contact-heading">Visit us at:</div>
+              <div className="contact-description mt-1">Kathmandu, Nepal</div>
+            </div>
+            <div className="contact-icon">
+              <AddLocationIcon />
+            </div>
+          </div>
+        </div>
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
+          <div className="contact-wrapper d-flex justify-content-between align-items-center">
+            <div>
+              <div className="contact-heading">Reach us at:</div>
+              <div className="contact-description mt-1">info@hajurko.com</div>
+            </div>
+            <div className="contact-icon">
+              <InboxIcon />
+            </div>
+          </div>
+        </div>
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
+          <div className="contact-wrapper d-flex justify-content-between align-items-center">
+            <div>
+              <div className="contact-heading">Contact us at:</div>
+              <div className="contact-description mt-1">+977 98XXXXXXXX</div>
+            </div>
+            <div className="contact-icon">
+              <LocalPhoneIcon />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

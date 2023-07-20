@@ -24,6 +24,10 @@ export const HireWorker = async (req, res) => {
   const { workID, message } = req.body;
   const workDetails = await WorkModel.findById(workID);
 
+  const rate = workDetails.rate;
+
+  
+
   const duplicateCheck = await RequestModel.find({
     clientID: clientID,
     workID: workID,
