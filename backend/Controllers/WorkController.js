@@ -1,7 +1,6 @@
 import WorkModel from "../Models/WorkModel.js";
 import WorkerModel from "../Models/WorkerModel.js";
-import RequestModel from "../Models/RequestMode.js";
-import UserModel from "../Models/UserModel.js";
+import RequestModel from "../Models/RequestModel.js";
 
 import jwt from "jsonwebtoken";
 
@@ -35,7 +34,7 @@ export const AddUserWork = async (req, res) => {
 
   const workerData = await WorkerModel.findById(userID);
 
-  if (!user.userStatus || workerData.userStatus) {
+  if (!workerData.userStatus) {
     return res
       .status(403)
       .json({ error: "Your account is not approved yet !" });
@@ -91,4 +90,34 @@ export const ListWorkRequests = async (req, res) => {
     return res.status(404).json({ error: "No job requests available !" });
 
   return res.status(200).json(requests);
+};
+
+export const AcceptRequest = async (req, res) => {
+  const { requestID } = req.body;
+
+  const request = await RequestModel.findById(requestID);
+
+  request.pending = false;
+  request.accepted = true;
+
+  await request.save();
+
+  console.log(request);
+
+  return res.status(200).json(request);
+};
+
+export const RejectRequest = async (req, res) => {
+  const { requestID } = req.body;
+
+  const request = await RequestModel.findById(requestID);
+
+  request.pending = false;
+  request.accepted = false;
+
+  await request.save();
+
+  console.log(request);
+
+  return res.status(200).json(request);
 };

@@ -5,7 +5,9 @@ import {
   GetWorkFromCategory,
   EditUserWork,
   AddUserWork,
-  ListWorkRequests
+  ListWorkRequests,
+  AcceptRequest,
+  RejectRequest,
 } from "../Controllers/WorkController.js";
 import { CheckAccess } from "../Controllers/AuthController.js";
 
@@ -22,5 +24,9 @@ router.patch("/editwork/:id", CheckAccess, EditUserWork);
 router.post("/addwork", CheckAccess, AddUserWork);
 
 router.get("/getworkrequests", CheckAccess, ListWorkRequests);
+
+router.post("/acceptrequest", CheckAccess, AcceptRequest);
+
+router.post("/rejectrequest", CheckAccess, RejectRequest);
 
 export default router;

@@ -16,6 +16,14 @@ const RequestSchema = mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "work",
   },
+  accepted: {
+    type: Boolean,
+    default: false,
+  },
+  pending: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const RequestModel = mongoose.model("request", RequestSchema);
