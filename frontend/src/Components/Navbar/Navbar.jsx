@@ -54,7 +54,7 @@ const Navbar = () => {
 
   useEffect(() => {
     console.log(user);
-    if (user !== null) {
+    if (user !== null && user.userType === "client") {
       validateClient(token);
     }
   }, []);
@@ -133,63 +133,65 @@ const Navbar = () => {
                     style={{ fontSize: "1.25rem" }}
                   />
                 </button>
-                <div className="user-area-wrapper ms-3 d-flex justify-content-center align-items-center">
-                  <div className="d-flex flex-column align-items-center justify-content-center me-3">
-                    <div className="user-name">
-                      {user.firstName + " " + user.lastName}
-                    </div>
-                    <div className="user-balance">
-                      NPR: {user.balance.toFixed(2)}
-                    </div>
-                  </div>
-                  <button
-                    className="add-balance-btn"
-                    onClick={() => {
-                      setModalOpenSecond(true);
-                    }}
-                  >
-                    <AddIcon />
-                  </button>
-                  <Modal
-                    isOpen={modalOpenSecond}
-                    onRequestClose={() => setModalOpenSecond(false)}
-                    style={customStyles}
-                  >
-                    <h4 className="mb-2 text-center">
-                      Add Ba
-                      <span style={{ color: "var(--secondary-orange)" }}>
-                        lance
-                      </span>
-                    </h4>
-                    <div className="modal-input mt-3">
-                      <div className="d-flex flex-column mt-3">
-                        <span className="input-label">Amount: (NPR)</span>
-                        <input
-                          type="number"
-                          value={amount}
-                          onChange={(e) => setAmount(e.target.value)}
-                        />
+                {user && user.userType === "client" && (
+                  <div className="user-area-wrapper ms-3 d-flex justify-content-center align-items-center">
+                    <div className="d-flex flex-column align-items-center justify-content-center me-3">
+                      <div className="user-name">
+                        {user.firstName + " " + user.lastName}
+                      </div>
+                      <div className="user-balance">
+                        NPR: {user.balance.toFixed(2)}
                       </div>
                     </div>
-                    <div className="d-flex mt-4">
-                      <button
-                        className="custom-button-2 me-3"
-                        onClick={() => setModalOpenSecond(false)}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        className="custom-button"
-                        onClick={() => {
-                          setModalOpenSecond(false);
-                          handleAddBalance();
-                        }}
-                      >
-                        Add Balance
-                      </button>
-                    </div>
-                  </Modal>
-                </div>
+                    <button
+                      className="add-balance-btn"
+                      onClick={() => {
+                        setModalOpenSecond(true);
+                      }}
+                    >
+                      <AddIcon />
+                    </button>
+                    <Modal
+                      isOpen={modalOpenSecond}
+                      onRequestClose={() => setModalOpenSecond(false)}
+                      style={customStyles}
+                    >
+                      <h4 className="mb-2 text-center">
+                        Add Ba
+                        <span style={{ color: "var(--secondary-orange)" }}>
+                          lance
+                        </span>
+                      </h4>
+                      <div className="modal-input mt-3">
+                        <div className="d-flex flex-column mt-3">
+                          <span className="input-label">Amount: (NPR)</span>
+                          <input
+                            type="number"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="d-flex mt-4">
+                        <button
+                          className="custom-button-2 me-3"
+                          onClick={() => setModalOpenSecond(false)}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="custom-button"
+                          onClick={() => {
+                            setModalOpenSecond(false);
+                            handleAddBalance();
+                          }}
+                        >
+                          Add Balance
+                        </button>
+                      </div>
+                    </Modal>
+                  </div>
+                )}
               </>
             )}
           </div>

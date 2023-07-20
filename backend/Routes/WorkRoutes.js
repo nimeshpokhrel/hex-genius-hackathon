@@ -11,6 +11,7 @@ import {
   RequestCompleted,
   HireWorker,
   ListSentInvite,
+  CancelInviteHandler,
 } from "../Controllers/WorkController.js";
 import { CheckAccess } from "../Controllers/AuthController.js";
 
@@ -37,5 +38,7 @@ router.post("/acceptrequest", CheckAccess, AcceptRequest);
 router.post("/rejectrequest", CheckAccess, RejectRequest);
 
 router.post("/requestcompleted", CheckAccess, RequestCompleted);
+
+router.post("/cancel-invite", CheckAccess, CancelInviteHandler);
 
 export default router;

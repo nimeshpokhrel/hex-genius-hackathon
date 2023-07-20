@@ -20,10 +20,30 @@ function BrowseCategory() {
   const [searchParams] = useSearchParams();
   const [error, setError] = useState("");
   const [workID, setWorkID] = useState("");
+  const [workIDSec, setWorkIDSec] = useState("");
   const { token } = useAuthContext();
   const [sentInvites, setSentInvites] = useState([]);
 
   const category = searchParams.get("category");
+
+  const cancelInviteHandler = async () => {
+    const response = await fetch("http://localhost:4000/cancel-invite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ workID: workIDSec }),
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      return setError(json.error);
+    }
+
+    ListSentInvites();
+  };
 
   const getCategoryData = async () => {
     const response = await fetch("http://localhost:4000/getworkscategory", {
@@ -95,6 +115,14 @@ function BrowseCategory() {
   useEffect(() => {
     if (workID !== "") HireWorker();
   }, [workID]);
+
+  useEffect(() => {
+    console.log(workIDSec);
+  }, []);
+
+  useEffect(() => {
+    if (workIDSec !== "") cancelInviteHandler();
+  }, [workIDSec]);
 
   return (
     <div className="body-margin">
@@ -233,7 +261,7 @@ function BrowseCategory() {
                             <button
                               className="custom-button"
                               onClick={() => {
-                                setWorkID(data._id);
+                                setWorkIDSec(data._id);
                               }}
                             >
                               CANCEL INVITE

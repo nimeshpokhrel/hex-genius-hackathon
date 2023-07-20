@@ -188,3 +188,16 @@ export const RequestCompleted = async (req, res) => {
 
   return res.status(200).json(request);
 };
+
+export const CancelInviteHandler = async (req, res) => {
+  const { workID } = req.body;
+
+  const workData = await RequestModel.findById(workID);
+
+  workData.accepted = false;
+  workData.pending = false;
+
+  await workData.save();
+
+  res.status(200).json(workData);
+};
