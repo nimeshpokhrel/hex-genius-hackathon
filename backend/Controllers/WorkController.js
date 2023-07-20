@@ -24,10 +24,6 @@ export const HireWorker = async (req, res) => {
   const { workID, message } = req.body;
   const workDetails = await WorkModel.findById(workID);
 
-  const rate = workDetails.rate;
-
-  
-
   const duplicateCheck = await RequestModel.find({
     clientID: clientID,
     workID: workID,
@@ -45,9 +41,6 @@ export const HireWorker = async (req, res) => {
         await RequestModel.deleteOne({ _id: delDataID });
       }
     }
-    return res
-      .status(403)
-      .json({ error: "Error: Already sent invitation for hire !" });
   }
 
   const newRequest = new RequestModel({
