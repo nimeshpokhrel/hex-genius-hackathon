@@ -1,0 +1,17 @@
+.request-wrapper {
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.05) !important;
+
+  .primary-label {
+    font-size: 15px;
+    color: var(--secondary-orange);
+    font-weight: 600;
+  }
+  .client-details {
+    svg {
+        font-size: 1.25rem;
+    }
+    font-size: 14.5px;
+  }
+}
