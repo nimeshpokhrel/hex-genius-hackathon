@@ -6,7 +6,7 @@ import PublicIcon from "@mui/icons-material/Public";
 
 const Services = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 py-5">
       <h2 className="section-heading" id="services">
         <span style={{ color: "var(--secondary-orange)" }}>Our</span> Services
       </h2>
