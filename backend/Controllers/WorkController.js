@@ -5,13 +5,35 @@ import RequestModel from "../Models/RequestModel.js";
 import jwt from "jsonwebtoken";
 
 export const GetWorkFromCategory = async (req, res) => {
-  const works = await WorkModel.find({ service: { $in: req.query.category } });
+  const { category } = req.body;
+  const works = await WorkModel.find({ service: { $in: category } }).populate(
+    "worker"
+  );
   if (!works) {
     return res
       .status(404)
       .json({ error: "No works available for the selected category !" });
   }
   return res.status(200).json(works);
+};
+
+export const HireWorker = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const clientID = jwt.verify(token, process.env.JWT);
+
+  const { workID, message } = req.body;
+  const workDetails = await WorkModel.findById(workID);
+
+  const newRequest = new RequestModel({
+    clientID,
+    workID,
+    workerID: workDetails.worker,
+    message,
+  });
+
+  const data = await newRequest.save();
+
+  return res.status(200).json(data);
 };
 
 export const GetAllUserWork = async (req, res) => {

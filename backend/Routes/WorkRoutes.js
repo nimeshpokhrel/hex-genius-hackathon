@@ -9,12 +9,15 @@ import {
   AcceptRequest,
   RejectRequest,
   RequestCompleted,
+  HireWorker,
 } from "../Controllers/WorkController.js";
 import { CheckAccess } from "../Controllers/AuthController.js";
 
 const router = express.Router();
 
-router.get("/getworkscategory", GetWorkFromCategory);
+router.post("/getworkscategory", GetWorkFromCategory);
+
+router.post("/hireworker", CheckAccess, HireWorker);
 
 router.get("/getuserworks", CheckAccess, GetAllUserWork);
 
