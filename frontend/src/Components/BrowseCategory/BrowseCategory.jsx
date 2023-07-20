@@ -13,6 +13,7 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AddLocationIcon from "@mui/icons-material/AddLocation";
+import Services from "../Services/Services";
 
 function BrowseCategory() {
   const [categoryData, setCategoryData] = useState([]);
@@ -244,6 +245,7 @@ function BrowseCategory() {
                   );
               })}
             </div>
+            <Services />
           </div>
         </div>
       </div>

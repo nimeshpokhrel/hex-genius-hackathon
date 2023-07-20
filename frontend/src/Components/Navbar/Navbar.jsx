@@ -63,7 +63,9 @@ const Navbar = () => {
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <div className="me-md-5 me-4">
-          <img src={NavLogo} alt="nav-logo" className="nav-logo" />
+          <Link to="/">
+            <img src={NavLogo} alt="nav-logo" className="nav-logo" />
+          </Link>
         </div>
         <button
           class="navbar-toggler"
@@ -84,7 +86,7 @@ const Navbar = () => {
             <Link to="/">
               <div className="nav-item me-45">HOME</div>
             </Link>
-            <Link to="/#services">
+            <Link to="#services">
               <div className="nav-item me-45">SERVICES</div>
             </Link>
             <div className="nav-item me-45">FAQs</div>

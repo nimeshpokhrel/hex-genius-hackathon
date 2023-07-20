@@ -3,6 +3,7 @@ import "./FindWorker.scss";
 import Navbar from "../Navbar/Navbar";
 import AvailableCategories from "../AvailableCategories/AvailableCategories";
 import Footer from "../Footer/Footer";
+import Services from "../Services/Services";
 
 const FindWorker = () => {
   return (
@@ -13,6 +14,7 @@ const FindWorker = () => {
           Our Availab<span className="secondary-color">le Categories</span>
         </h4>
         <AvailableCategories />
+        <Services />
       </div>
       <Footer />
     </div>

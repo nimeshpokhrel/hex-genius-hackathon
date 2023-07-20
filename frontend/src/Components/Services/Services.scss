@@ -1,0 +1,25 @@
+.services-wrapper {
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.05) !important;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--secondary-orange);
+  }
+}
+
+.services-title {
+  font-size: 18px;
+  color: var(--secondary-orange);
+  font-weight: 600;
+}
+
+.services-description {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.services-icon svg {
+  font-size: 3rem;
+}
