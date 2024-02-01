@@ -154,7 +154,7 @@ export const AcceptRequest = async (req, res) => {
     .populate("workID");
 
   if (request.clientID.balance < request.workID.rate) {
-    return res.status(403).json({ error: "Client balane is too low !" });
+    return res.status(403).json({ error: "Error: client balance is too low for this transaction !" });
   }
 
   const userData = await UserModel.findById(request.clientID._id);

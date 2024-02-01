@@ -180,22 +180,28 @@ const Signup = () => {
                       </div>
                     </div>
                     {!isClient && (
-                      <div className="d-flex flex-column mt-4">
-                        <span className="input-label">Your Service:</span>
-                        <select onChange={(e) => setService(e.target.value)}>
-                          <option selected disabled>
-                            choose your service
-                          </option>
-                          <option value="plumber">Plumber</option>
-                          <option value="carpenter">Carpenter</option>
-                          <option value="beautician">Beautician</option>
-                          <option value="electrician">Electrician</option>
-                          <option value="driver">Driver</option>
-                          <option value="maid">Maid</option>
-                          <option value="tutor">Tutor</option>
-                          <option value="homecook">Homecook</option>
-                          <option value="priest">Priest</option>
-                        </select>
+                      <div>
+                        <div className="d-flex flex-column mt-4">
+                        <span className="input-label">Your Citizenship:</span>
+                        <input type="file" required />
+                        </div>
+                        <div className="d-flex flex-column mt-4">
+                          <span className="input-label">Your Service:</span>
+                          <select onChange={(e) => setService(e.target.value)}>
+                            <option selected disabled>
+                              choose your service
+                            </option>
+                            <option value="plumber">Plumber</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="beautician">Beautician</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="driver">Driver</option>
+                            <option value="maid">Maid</option>
+                            <option value="tutor">Tutor</option>
+                            <option value="homecook">Homecook</option>
+                            <option value="priest">Priest</option>
+                          </select>
+                        </div>
                       </div>
                     )}
                     <button

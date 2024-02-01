@@ -54,7 +54,7 @@ const Navbar = () => {
 
   useEffect(() => {
     console.log(user);
-    if (user !== null && user.userType === "client") {
+    if ((user !== null && undefined) && user.userType === "client") {
       validateClient(token);
     }
   }, []);
